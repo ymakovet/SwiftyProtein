@@ -1,0 +1,121 @@
+//
+//  ListVC.swift
+//  Proteins
+//
+//  Created by Adilyam TILEGENOVA on 12/12/18.
+//  Copyright © 2018 Adilyam TILEGENOVA. All rights reserved.
+//
+
+import UIKit
+
+//typealias CompletionHandler = (_ success:Bool) -> Void
+
+class ListVC: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    private let actInd = UIActivityIndicatorView()
+    
+    private let apiManager = ApiManager()
+    
+    private var filteredArray = [String]()
+    private var currentArray = [String]()
+    
+    private var names = [String]() {
+        didSet {
+            if names.count > 0 {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        parse()
+        hideKeyboardWhenTappedAround()
+    }
+    
+    private func parse() {
+        if let url = URL(string: "https://projects.intra.42.fr/uploads/document/document/312/ligands.txt") {
+            do {
+                let contents = try String(contentsOf: url)
+                names = contents.components(separatedBy: "\n")
+                currentArray = names
+            } catch {
+                showAlertController(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func showActivityIndicatory() {
+        actInd.frame = CGRect(x: 0.0, y: 0.0, width:40.0, height: 40.0);
+        actInd.center = view.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = .gray
+        view.addSubview(actInd)
+        actInd.startAnimating()
+    }
+    
+    private func removeActivityIndicator(){
+        actInd.stopAnimating()
+        actInd.removeFromSuperview()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSceneKit" {
+            let data = sender as! ([(Position: (x: Float, y: Float, z: Float), Type: String)], [[Int]])
+            let destination = segue.destination as! ModelProteinsViewController
+            
+            destination.elem = data.0
+            destination.conect = data.1
+            self.removeActivityIndicator()
+        }
+    }
+    
+}
+
+extension ListVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        cell.textLabel?.text = currentArray[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        showActivityIndicatory()
+        apiManager.getProteinFullInfo(name: self.currentArray[indexPath.row]) { (success, elem, conect) in
+            if success {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "showSceneKit", sender: (elem, conect))
+                }
+            }
+        }
+    }
+}
+
+
+extension ListVC: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            currentArray = names
+            tableView.reloadData()
+            return
+        }
+        currentArray = names.filter{$0.lowercased().contains(searchText.lowercased())}
+        tableView.reloadData()
+    }
+}
+
