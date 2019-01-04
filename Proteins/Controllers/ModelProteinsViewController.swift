@@ -17,7 +17,7 @@ class ModelProteinsViewController: UIViewController {
     var lightNode: SCNNode!
     var scene: SceneProtein?
     
-    var elem: [(Position: (x: Float, y: Float, z: Float), Type: String)]!
+    var elem: [(position: (x: Float, y: Float, z: Float), type: String)]!
     var conect: [[Int]]!
 //    var elem = [(Position: (x: Float, y: Float, z: Float), Type: String)]()
 //    var conect = [[Int]]()

@@ -11,14 +11,14 @@ import Foundation
 
 class ApiManager: NSObject {
     
-    private var elem: [(Position: (x: Float, y: Float, z: Float), Type: String)] = []
+    private var elem: [(position: (x: Float, y: Float, z: Float), type: String)] = []
     private var conect: [[Int]] = [[]]
     
 //    override init() {
 //        super.init()
 //    }
     
-    func getProteinFullInfo(name: String, completion: @escaping (Bool, [(Position: (x: Float, y: Float, z: Float), Type: String)], [[Int]]) -> Void) {
+    func getProteinFullInfo(name: String, completion: @escaping (Bool, [(position: (x: Float, y: Float, z: Float), type: String)], [[Int]]) -> Void) {
         DispatchQueue.global(qos: .background).async {
             if let url = URL(string: "https://file.rcsb.org/ligands/view/\(name)_model.pdb") {
                 do {

@@ -11,10 +11,10 @@ import SceneKit
 
 class SceneProtein: SCNScene {
     
-    var elem: [(Position: (x: Float, y: Float, z: Float), Type: String)] = []   
+    var elem: [(position: (x: Float, y: Float, z: Float), type: String)] = []
     var conect: [[Int]] = [[]]
     
-    init(elem: [(Position: (x: Float, y: Float, z: Float), Type: String)], conect: [[Int]])
+    init(elem: [(position: (x: Float, y: Float, z: Float), type: String)], conect: [[Int]])
     {
         super.init()
         self.elem = elem
@@ -38,14 +38,14 @@ class SceneProtein: SCNScene {
         for item in conect {
             if (i < nbr)
             {
-                let origin: SCNVector3 = SCNVector3(x: elem[i].Position.x, y: elem[i].Position.y, z: elem[i].Position.z)
+                let origin: SCNVector3 = SCNVector3(x: elem[i].position.x, y: elem[i].position.y, z: elem[i].position.z)
                 var j: Int = 1
                 while (j < item.count)
                 {
                     let nb: Int = item[j]
                     if (nb < nbr && i + 1 < nb)
                     {
-                        let dest: SCNVector3 = SCNVector3(x: elem[nb - 1].Position.x, y: elem[nb - 1].Position.y, z: elem[nb - 1].Position.z)
+                        let dest: SCNVector3 = SCNVector3(x: elem[nb - 1].position.x, y: elem[nb - 1].position.y, z: elem[nb - 1].position.z)
                         rootNode.addChildNode(LineNode(node: rootNode, vector1: origin, vector2: dest))
                         count = count + 1
                     }
@@ -61,9 +61,9 @@ class SceneProtein: SCNScene {
     {
         for atom in elem {
             let sphere = SCNSphere(radius: 0.4)
-            sphere.firstMaterial?.diffuse.contents = self.CPKcoloring(type: atom.Type)
+            sphere.firstMaterial?.diffuse.contents = self.CPKcoloring(type: atom.type)
             let sphereNode = SCNNode(geometry: sphere)
-            sphereNode.position = SCNVector3(x: atom.Position.x, y: atom.Position.y, z: atom.Position.z)
+            sphereNode.position = SCNVector3(x: atom.position.x, y: atom.position.y, z: atom.position.z)
             rootNode.addChildNode(sphereNode)
         }
     }

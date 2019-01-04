@@ -65,12 +65,13 @@ class ListVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSceneKit" {
-            let data = sender as! ([(Position: (x: Float, y: Float, z: Float), Type: String)], [[Int]])
+            let data = sender as! ([(position: (x: Float, y: Float, z: Float), type: String)], [[Int]])
             let destination = segue.destination as! ModelProteinsViewController
             
             destination.elem = data.0
             destination.conect = data.1
             self.removeActivityIndicator()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
@@ -95,6 +96,7 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         showActivityIndicatory()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         apiManager.getProteinFullInfo(name: self.currentArray[indexPath.row]) { (success, elem, conect) in
             if success {
                 DispatchQueue.main.async {

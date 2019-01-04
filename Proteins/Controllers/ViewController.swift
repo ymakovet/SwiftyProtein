@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var btn: UIButton!
     
-    var pass: Bool = false {
+    private var pass: Bool = false {
         didSet {
             if pass {
                 label.isHidden = false
@@ -28,24 +28,58 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         textField.delegate = self
+        hideKeyboardWhenTappedAround()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        textField.text = ""
         label.isHidden = true
         textField.isHidden = true
         btn.isHidden = true
-        hideKeyboardWhenTappedAround()
         authWithTouchID()
     }
 
-
     @IBAction func sendPassBtnPressed(_ sender: UIButton) {
+        btn.isEnabled = false
         if let txt = textField.text {
             if txt == "1597" {
                 performSegue(withIdentifier: "toTableView", sender: self)
             }
             else {showAlertController("Invalid password")}
         }
+        btn.isEnabled = true
     }
     
-    
+    private func authWithTouchID() {
+        let context = LAContext()
+        var error: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Authenticate with Touch ID"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                (succes, error) in
+                if succes {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "toTableView", sender: self)
+                    }
+                }
+                else {
+                    if (error!.localizedDescription == "Canceled by user.") || (error!.localizedDescription == "Fallback authentication mechanism selected."){
+                        DispatchQueue.main.async {
+                            self.pass = true
+                        }
+                    }
+                    else {
+                        self.showAlertController("Touch ID Authentication Failed")
+                    }
+                }
+            }
+        }
+        else {
+            self.pass = true
+        }
+    }
     
 }
 
@@ -56,31 +90,6 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
-extension ViewController {
-    func authWithTouchID() {
-        let context = LAContext()
-        var error: NSError?
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Authenticate with Touch ID"
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason, reply:
-                {(succes, error) in
-                    if succes {self.performSegue(withIdentifier: "toTableView", sender: self)}
-                    else {
-                        if (error!.localizedDescription == "Canceled by user.") || (error!.localizedDescription == "Fallback authentication mechanism selected."){
-                            DispatchQueue.main.async {
-                                self.pass = true
-                            }
-                        }
-                        else {self.showAlertController("Touch ID Authentication Failed")}
-                    }
-            })
-        }
-        else {
-            self.pass = true
-        }
-    }
-    
-}
 extension UIViewController {
     
     func hideKeyboardWhenTappedAround() {
@@ -89,13 +98,13 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func showAlertController(_ message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
