@@ -72,6 +72,9 @@ class ViewController: UIViewController {
                     }
                     else {
                         self.showAlertController("Touch ID Authentication Failed")
+                        DispatchQueue.main.async {
+                            self.pass = true
+                        }
                     }
                 }
             }
