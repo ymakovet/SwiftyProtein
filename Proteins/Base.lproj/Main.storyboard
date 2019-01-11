@@ -44,10 +44,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="459-hL-p0q">
-                                <rect key="frame" x="130" y="420" width="116" height="83"/>
+                                <rect key="frame" x="152" y="420" width="71" height="71"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="83" id="XaY-j6-3kt"/>
-                                    <constraint firstAttribute="width" constant="116" id="inM-8i-zGb"/>
+                                    <constraint firstAttribute="width" constant="71" id="2Dz-2M-HNq"/>
+                                    <constraint firstAttribute="height" constant="71" id="giW-lf-x6h"/>
                                 </constraints>
                                 <state key="normal" image="Touch-ID-White"/>
                                 <connections>
@@ -57,12 +57,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="459-hL-p0q" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="6mB-zf-YKZ"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="bottom" secondItem="SyI-jD-9ue" secondAttribute="bottom" constant="34" id="CYg-Lk-bBC"/>
                             <constraint firstItem="tCm-ei-19e" firstAttribute="centerY" secondItem="0jo-tU-Pt7" secondAttribute="centerY" constant="-17" id="Dgr-CJ-0VG"/>
                             <constraint firstItem="tCm-ei-19e" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="FIu-Rt-lyh"/>
-                            <constraint firstItem="459-hL-p0q" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="J8g-W6-1g5"/>
                             <constraint firstItem="tCm-ei-19e" firstAttribute="top" secondItem="6cH-f9-nbb" secondAttribute="bottom" constant="16" id="Nph-cs-lQc"/>
-                            <constraint firstItem="459-hL-p0q" firstAttribute="top" secondItem="tCm-ei-19e" secondAttribute="bottom" constant="16" id="Ufb-qZ-cMa"/>
+                            <constraint firstItem="459-hL-p0q" firstAttribute="top" secondItem="tCm-ei-19e" secondAttribute="bottom" constant="16" id="OYo-AE-iWO"/>
                             <constraint firstItem="6cH-f9-nbb" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="Vli-8F-Hlk"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="top" secondItem="qDZ-kh-0J0" secondAttribute="top" id="XuT-IJ-pfZ"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="trailing" secondItem="SyI-jD-9ue" secondAttribute="trailing" id="bkm-Mz-z7M"/>

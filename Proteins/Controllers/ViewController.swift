@@ -22,23 +22,6 @@ class ViewController: UIViewController {
         var error: NSError?
         if !context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             touchIDBtn.isHidden = true
-            
-            if let err = error {
-                switch err.code{
-                case LAError.Code.biometryNotEnrolled.rawValue:
-                    showAlertController(err.localizedDescription,
-                                        "User is not enrolled")
-                case LAError.Code.passcodeNotSet.rawValue:
-                    showAlertController(err.localizedDescription,
-                                        "A passcode has not been set")
-                case LAError.Code.biometryNotAvailable.rawValue:
-                    showAlertController(err.localizedDescription,
-                                        "Biometric authentication not available")
-                default:
-                    showAlertController(err.localizedDescription,
-                                        "Unknown error")
-                }
-            }
         }
         
         textField.delegate = self
@@ -49,7 +32,6 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         textField.text = ""
-//        authWithTouchID()
     }
 
     @IBAction func sendPassBtnPressed(_ sender: UIButton) {
@@ -68,7 +50,7 @@ class ViewController: UIViewController {
         touchIDBtn.isEnabled = false
         let context = LAContext()
         let reason = "Identify yourself"
-        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) {
             (succes, error) in
             if succes {
                 DispatchQueue.main.async {
@@ -80,41 +62,11 @@ class ViewController: UIViewController {
                     self.showAlertController("Authentication Failed")
                 }
             }
+            DispatchQueue.main.async {
+                self.touchIDBtn.isEnabled = true
+            }
         }
-        touchIDBtn.isEnabled = true
     }
-    
-//    private func authWithTouchID() {
-//        let context = LAContext()
-//        var error: NSError?
-//        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-//            let reason = "Authenticate with Touch ID"
-//            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
-//                (succes, error) in
-//                if succes {
-//                    DispatchQueue.main.async {
-//                        self.performSegue(withIdentifier: "toTableView", sender: self)
-//                    }
-//                }
-//                else {
-//                    if (error!.localizedDescription == "Canceled by user.") || (error!.localizedDescription == "Fallback authentication mechanism selected."){
-//                        DispatchQueue.main.async {
-//                            self.pass = true
-//                        }
-//                    }
-//                    else {
-//                        self.showAlertController("Touch ID Authentication Failed")
-//                        DispatchQueue.main.async {
-//                            self.pass = true
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        else {
-//            self.pass = true
-//        }
-//    }
     
 }
 
