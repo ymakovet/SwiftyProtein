@@ -47,6 +47,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		616DDB9521E8DAD700B9C6E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF55434921CD26790024C4B4 /* SceneProtein.swift */,
+				CF3427EF21D10D750022E88B /* LineNode.swift */,
+				E288D84721D0076F00BD8CAA /* ProteinCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E2707D2421CD57DD0094998E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,10 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				E2707D2421CD57DD0094998E /* Controllers */,
-				CF55434921CD26790024C4B4 /* SceneProtein.swift */,
-				CF3427EF21D10D750022E88B /* LineNode.swift */,
+				616DDB9521E8DAD700B9C6E7 /* Views */,
 				E2AD7C2221CD78D9007FC436 /* ApiManager.swift */,
-				E288D84721D0076F00BD8CAA /* ProteinCell.swift */,
 				E2ECF1F921B971F30055CB86 /* AppDelegate.swift */,
 				E2ECF1FD21B971F30055CB86 /* Main.storyboard */,
 				E2ECF20021B971F30055CB86 /* Assets.xcassets */,

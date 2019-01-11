@@ -24,7 +24,7 @@ class ModelProteinsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(elem[0].0)
         initCamera()
         initView()
         initScene()
