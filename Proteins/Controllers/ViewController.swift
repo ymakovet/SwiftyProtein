@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
     }
     
-    private func login(completion: () -> Void) {
+    private func login(completion: @escaping () -> Void) {
         context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Identify yourself") {
             (succes, error) in
             if succes {
@@ -44,6 +44,7 @@ class ViewController: UIViewController {
                     self.showAlertController("Authentication Failed")
                 }
             }
+            completion()
         }
     }
     
@@ -51,7 +52,9 @@ class ViewController: UIViewController {
         touchIDBtn.isEnabled = false
         
         login {
-            self.touchIDBtn.isEnabled = true
+            DispatchQueue.main.async {
+                self.touchIDBtn.isEnabled = true
+            }
         }
     }
     

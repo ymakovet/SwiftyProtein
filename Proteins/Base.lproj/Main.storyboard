@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RB2-Lk-A0R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RB2-Lk-A0R">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="459-hL-p0q">
-                                <rect key="frame" x="152" y="371" width="72" height="70"/>
+                                <rect key="frame" x="152" y="370.66666666666669" width="71" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="Uba-vo-nbU"/>
+                                    <constraint firstAttribute="height" constant="71" id="fp7-zM-z9a"/>
+                                </constraints>
                                 <state key="normal" image="Touch-ID-White"/>
                                 <connections>
                                     <action selector="touchIDBtn:" destination="RB2-Lk-A0R" eventType="touchUpInside" id="c6O-kt-yGw"/>
@@ -31,14 +35,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="459-hL-p0q" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="4yl-lE-Gpj"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="bottom" secondItem="SyI-jD-9ue" secondAttribute="bottom" constant="34" id="CYg-Lk-bBC"/>
-                            <constraint firstItem="459-hL-p0q" firstAttribute="centerY" secondItem="0jo-tU-Pt7" secondAttribute="centerY" id="RfT-TD-gc2"/>
-                            <constraint firstItem="459-hL-p0q" firstAttribute="leading" secondItem="SyI-jD-9ue" secondAttribute="leading" constant="152" id="Wit-O0-YHv"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="top" secondItem="qDZ-kh-0J0" secondAttribute="top" id="XuT-IJ-pfZ"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="trailing" secondItem="SyI-jD-9ue" secondAttribute="trailing" id="bkm-Mz-z7M"/>
+                            <constraint firstItem="459-hL-p0q" firstAttribute="centerY" secondItem="0jo-tU-Pt7" secondAttribute="centerY" id="gUx-Al-xFa"/>
+                            <constraint firstItem="459-hL-p0q" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="jBY-ja-6sW"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="leading" secondItem="SyI-jD-9ue" secondAttribute="leading" id="prw-de-r2T"/>
-                            <constraint firstItem="459-hL-p0q" firstAttribute="top" secondItem="SyI-jD-9ue" secondAttribute="top" constant="327" id="zd6-xO-s7U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SyI-jD-9ue"/>
                     </view>
@@ -162,7 +164,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="512x512bb" width="256" height="256"/>
+        <image name="512x512bb" width="512" height="512"/>
         <image name="Touch-ID-White" width="512" height="512"/>
     </resources>
 </document>
