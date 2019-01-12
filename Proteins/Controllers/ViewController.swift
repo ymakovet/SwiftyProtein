@@ -11,46 +11,28 @@ import LocalAuthentication
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var touchIDBtn: UIButton!
+    
+    private let context = LAContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let context = LAContext()
         var error: NSError?
-        if !context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            print("here")
+            let imageName = (context.biometryType == .faceID ? "face-id" : "Touch-ID-White")
+            touchIDBtn.setImage(UIImage(named: imageName), for: .normal)
+        }
+        else {
             touchIDBtn.isHidden = true
+            login(completion: {})
         }
-        
-        textField.delegate = self
-        hideKeyboardWhenTappedAround()
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        textField.text = ""
-    }
-
-    @IBAction func sendPassBtnPressed(_ sender: UIButton) {
-        loginBtn.isEnabled = false
-        if let txt = textField.text {
-            if txt == "1597" {
-                performSegue(withIdentifier: "toTableView", sender: self)
-            }
-            else {showAlertController("Invalid password")}
-        }
-        loginBtn.isEnabled = true
     }
     
-    
-    @IBAction func touchIDBtn(_ sender: UIButton) {
-        touchIDBtn.isEnabled = false
-        let context = LAContext()
-        let reason = "Identify yourself"
-        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) {
+    private func login(completion: () -> Void) {
+        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Identify yourself") {
             (succes, error) in
             if succes {
                 DispatchQueue.main.async {
@@ -62,36 +44,44 @@ class ViewController: UIViewController {
                     self.showAlertController("Authentication Failed")
                 }
             }
-            DispatchQueue.main.async {
-                self.touchIDBtn.isEnabled = true
-            }
         }
     }
     
+    @IBAction func touchIDBtn(_ sender: UIButton) {
+        touchIDBtn.isEnabled = false
+        
+        login {
+            self.touchIDBtn.isEnabled = true
+        }
+    }
+    
+
+    
 }
 
-extension ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-}
+//extension ViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        self.view.endEditing(true)
+//        return false
+//    }
+//}
 
 extension UIViewController {
-    
+
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+
     func showAlertController(_ message: String, _ title: String = "") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 }
+

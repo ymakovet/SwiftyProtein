@@ -21,34 +21,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="512x512bb" translatesAutoresizingMaskIntoConstraints="NO" id="0jo-tU-Pt7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6cH-f9-nbb">
-                                <rect key="frame" x="112" y="328" width="150" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="hgi-sA-hMC"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCm-ei-19e">
-                                <rect key="frame" x="112" y="374" width="150" height="30"/>
-                                <color key="backgroundColor" red="0.43982136249542236" green="0.80246847867965698" blue="0.59996128082275391" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="tZ5-j8-grC"/>
-                                </constraints>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendPassBtnPressed:" destination="RB2-Lk-A0R" eventType="touchUpInside" id="rS4-RO-EyH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="459-hL-p0q">
-                                <rect key="frame" x="152" y="420" width="71" height="71"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="71" id="2Dz-2M-HNq"/>
-                                    <constraint firstAttribute="height" constant="71" id="giW-lf-x6h"/>
-                                </constraints>
+                                <rect key="frame" x="152" y="371" width="72" height="70"/>
                                 <state key="normal" image="Touch-ID-White"/>
                                 <connections>
                                     <action selector="touchIDBtn:" destination="RB2-Lk-A0R" eventType="touchUpInside" id="c6O-kt-yGw"/>
@@ -57,23 +31,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="459-hL-p0q" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="6mB-zf-YKZ"/>
+                            <constraint firstItem="459-hL-p0q" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="4yl-lE-Gpj"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="bottom" secondItem="SyI-jD-9ue" secondAttribute="bottom" constant="34" id="CYg-Lk-bBC"/>
-                            <constraint firstItem="tCm-ei-19e" firstAttribute="centerY" secondItem="0jo-tU-Pt7" secondAttribute="centerY" constant="-17" id="Dgr-CJ-0VG"/>
-                            <constraint firstItem="tCm-ei-19e" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="FIu-Rt-lyh"/>
-                            <constraint firstItem="tCm-ei-19e" firstAttribute="top" secondItem="6cH-f9-nbb" secondAttribute="bottom" constant="16" id="Nph-cs-lQc"/>
-                            <constraint firstItem="459-hL-p0q" firstAttribute="top" secondItem="tCm-ei-19e" secondAttribute="bottom" constant="16" id="OYo-AE-iWO"/>
-                            <constraint firstItem="6cH-f9-nbb" firstAttribute="centerX" secondItem="0jo-tU-Pt7" secondAttribute="centerX" id="Vli-8F-Hlk"/>
+                            <constraint firstItem="459-hL-p0q" firstAttribute="centerY" secondItem="0jo-tU-Pt7" secondAttribute="centerY" id="RfT-TD-gc2"/>
+                            <constraint firstItem="459-hL-p0q" firstAttribute="leading" secondItem="SyI-jD-9ue" secondAttribute="leading" constant="152" id="Wit-O0-YHv"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="top" secondItem="qDZ-kh-0J0" secondAttribute="top" id="XuT-IJ-pfZ"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="trailing" secondItem="SyI-jD-9ue" secondAttribute="trailing" id="bkm-Mz-z7M"/>
                             <constraint firstItem="0jo-tU-Pt7" firstAttribute="leading" secondItem="SyI-jD-9ue" secondAttribute="leading" id="prw-de-r2T"/>
+                            <constraint firstItem="459-hL-p0q" firstAttribute="top" secondItem="SyI-jD-9ue" secondAttribute="top" constant="327" id="zd6-xO-s7U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SyI-jD-9ue"/>
                     </view>
                     <connections>
-                        <outlet property="loginBtn" destination="tCm-ei-19e" id="ES9-84-klx"/>
-                        <outlet property="textField" destination="6cH-f9-nbb" id="EhP-P7-3Lg"/>
-                        <outlet property="touchIDBtn" destination="459-hL-p0q" id="ios-2D-41f"/>
+                        <outlet property="touchIDBtn" destination="459-hL-p0q" id="vOa-zz-fPs"/>
                         <segue destination="ceu-gc-Mpz" kind="show" identifier="toTableView" id="ep7-al-sOv"/>
                     </connections>
                 </viewController>
