@@ -11,14 +11,24 @@ import LocalAuthentication
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var identifyLabel: UILabel!
     @IBOutlet weak var touchIDBtn: UIButton!
     
     private let context = LAContext()
     var isProtectionSet = true
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        identifyLabel.text = """
+        Identify yourself
+        ⬇️
+        """
+        
+        reloadData()
+    }
+    
+    func reloadData() {
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let imageName = (context.biometryType == .faceID ? "face-id" : "Touch-ID-White")
