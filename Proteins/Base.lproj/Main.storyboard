@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="width" constant="71" id="Uba-vo-nbU"/>
                                     <constraint firstAttribute="height" constant="71" id="fp7-zM-z9a"/>
                                 </constraints>
-                                <state key="normal" image="Touch-ID-White"/>
+                                <state key="normal" image="passcode"/>
                                 <connections>
                                     <action selector="touchIDBtn:" destination="RB2-Lk-A0R" eventType="touchUpInside" id="c6O-kt-yGw"/>
                                 </connections>
@@ -165,6 +165,6 @@
     </scenes>
     <resources>
         <image name="512x512bb" width="512" height="512"/>
-        <image name="Touch-ID-White" width="512" height="512"/>
+        <image name="passcode" width="200" height="200"/>
     </resources>
 </document>

@@ -14,21 +14,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var touchIDBtn: UIButton!
     
     private let context = LAContext()
+    var isProtectionSet = true
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            print("here")
             let imageName = (context.biometryType == .faceID ? "face-id" : "Touch-ID-White")
             touchIDBtn.setImage(UIImage(named: imageName), for: .normal)
         }
-        else {
-            touchIDBtn.isHidden = true
-            login(completion: {})
+        else if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            touchIDBtn.setImage(UIImage(named: "passcode"), for: .normal)
         }
-
+        else {
+            isProtectionSet = false
+            self.performSegue(withIdentifier: "toTableView", sender: self)
+        }
     }
     
     private func login(completion: @escaping () -> Void) {
@@ -57,8 +59,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-
     
 }
 
