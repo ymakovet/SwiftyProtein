@@ -9,13 +9,12 @@
 import UIKit
 import LocalAuthentication
 
-class ViewController: UIViewController {
+class AuthVC: UIViewController {
 
     @IBOutlet weak var identifyLabel: UILabel!
     @IBOutlet weak var touchIDBtn: UIButton!
     
-    private let context = LAContext()
-    var isProtectionSet = true
+    private var context = LAContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,33 +29,36 @@ class ViewController: UIViewController {
     
     func reloadData() {
         var error: NSError?
+        
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let imageName = (context.biometryType == .faceID ? "face-id" : "Touch-ID-White")
+            let imageName = (context.biometryType == .faceID ? "faceID" : "touchID")
             touchIDBtn.setImage(UIImage(named: imageName), for: .normal)
         }
         else if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
             touchIDBtn.setImage(UIImage(named: "passcode"), for: .normal)
         }
         else {
-            isProtectionSet = false
             self.performSegue(withIdentifier: "toTableView", sender: self)
         }
+        
     }
     
     private func login(completion: @escaping () -> Void) {
         context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Identify yourself") {
-            (succes, error) in
-            if succes {
-                DispatchQueue.main.async {
+            [unowned self] (succes, error) in
+            DispatchQueue.main.async {
+                if succes {
                     self.performSegue(withIdentifier: "toTableView", sender: self)
                 }
-            }
-            else {
-                if !(error!.localizedDescription == "Canceled by user.") && !(error!.localizedDescription == "Fallback authentication mechanism selected.") {
-                    self.showAlertController("Authentication Failed")
+                else {
+                    if !(error!.localizedDescription == "Canceled by user.") && !(error!.localizedDescription == "Fallback authentication mechanism selected.") {
+                        self.showAlertController("Authentication Failed")
+                    }
                 }
+
+                self.context = LAContext()
+                completion()
             }
-            completion()
         }
     }
     

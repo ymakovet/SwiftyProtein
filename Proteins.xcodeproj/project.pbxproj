@@ -13,7 +13,7 @@
 		E288D84821D0076F00BD8CAA /* ProteinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288D84721D0076F00BD8CAA /* ProteinCell.swift */; };
 		E2AD7C2321CD78D9007FC436 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AD7C2221CD78D9007FC436 /* ApiManager.swift */; };
 		E2ECF1FA21B971F30055CB86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECF1F921B971F30055CB86 /* AppDelegate.swift */; };
-		E2ECF1FC21B971F30055CB86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECF1FB21B971F30055CB86 /* ViewController.swift */; };
+		E2ECF1FC21B971F30055CB86 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECF1FB21B971F30055CB86 /* AuthVC.swift */; };
 		E2ECF1FF21B971F30055CB86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2ECF1FD21B971F30055CB86 /* Main.storyboard */; };
 		E2ECF20121B971F30055CB86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2ECF20021B971F30055CB86 /* Assets.xcassets */; };
 		E2ECF20421B971F30055CB86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2ECF20221B971F30055CB86 /* LaunchScreen.storyboard */; };
@@ -28,7 +28,7 @@
 		E2AD7C2221CD78D9007FC436 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		E2ECF1F621B971F30055CB86 /* Proteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proteins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2ECF1F921B971F30055CB86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E2ECF1FB21B971F30055CB86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2ECF1FB21B971F30055CB86 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		E2ECF1FE21B971F30055CB86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2ECF20021B971F30055CB86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2ECF20321B971F30055CB86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 			children = (
 				CFF6F4C621C18F0D0052FBBB /* ModelProteinsViewController.swift */,
 				E2FD86A221C17F2D00F6080B /* ListVC.swift */,
-				E2ECF1FB21B971F30055CB86 /* ViewController.swift */,
+				E2ECF1FB21B971F30055CB86 /* AuthVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -173,7 +173,7 @@
 				CFF6F4C721C18F0D0052FBBB /* ModelProteinsViewController.swift in Sources */,
 				E2FD86A321C17F2D00F6080B /* ListVC.swift in Sources */,
 				CF55434A21CD26790024C4B4 /* SceneProtein.swift in Sources */,
-				E2ECF1FC21B971F30055CB86 /* ViewController.swift in Sources */,
+				E2ECF1FC21B971F30055CB86 /* AuthVC.swift in Sources */,
 				E2AD7C2321CD78D9007FC436 /* ApiManager.swift in Sources */,
 				E2ECF1FA21B971F30055CB86 /* AppDelegate.swift in Sources */,
 				E288D84821D0076F00BD8CAA /* ProteinCell.swift in Sources */,

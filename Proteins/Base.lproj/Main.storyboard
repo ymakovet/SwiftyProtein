@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RB2-Lk-A0R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RB2-Lk-A0R">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--AuthVC-->
         <scene sceneID="h9c-Ui-MzW">
             <objects>
-                <viewController storyboardIdentifier="Login" id="RB2-Lk-A0R" customClass="ViewController" customModule="Proteins" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="RB2-Lk-A0R" customClass="AuthVC" customModule="Proteins" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qDZ-kh-0J0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="459-hL-p0q">
-                                <rect key="frame" x="121" y="349" width="132" height="124"/>
+                                <rect key="frame" x="121.66666666666669" y="349" width="132" height="124"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="55o-EE-5l0"/>
                                     <constraint firstAttribute="height" constant="124" id="NYl-Nw-cxO"/>
@@ -174,7 +174,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="512x512bb" width="256" height="256"/>
-        <image name="passcode" width="512" height="512"/>
+        <image name="512x512bb" width="512" height="512"/>
+        <image name="passcode" width="491.51998901367188" height="491.51998901367188"/>
     </resources>
 </document>
