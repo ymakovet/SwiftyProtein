@@ -19,8 +19,6 @@ class ModelProteinsViewController: UIViewController {
     
     var elem: [(position: (x: Float, y: Float, z: Float), type: String)]!
     var conect: [[Int]]!
-//    var elem = [(Position: (x: Float, y: Float, z: Float), Type: String)]()
-//    var conect = [[Int]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,17 +39,17 @@ class ModelProteinsViewController: UIViewController {
         scene = SceneProtein(elem: elem, conect: conect)
         
         proteinsScene = scene
-        proteinsScene.rootNode.addChildNode(lightNode)
-        proteinsScene.rootNode.addChildNode(cameraNode)
+//        proteinsScene.rootNode.addChildNode(lightNode)
+//        proteinsScene.rootNode.addChildNode(cameraNode)
         proteinsView.scene = proteinsScene
         proteinsView.showsStatistics = true
         proteinsView.isPlaying = true
     }
     
     func initCamera() {
-        cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
+//        cameraNode = SCNNode()
+//        cameraNode.camera = SCNCamera()
+//        cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
         
         lightNode = SCNNode()
         lightNode.light = SCNLight()
