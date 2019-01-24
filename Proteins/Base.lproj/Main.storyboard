@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RB2-Lk-A0R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RB2-Lk-A0R">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -121,38 +121,51 @@
             </objects>
             <point key="canvasLocation" x="2769" y="564"/>
         </scene>
-        <!--Model Proteins View Controller-->
+        <!--Model ProteinsVC-->
         <scene sceneID="pZA-Ug-jH7">
             <objects>
-                <viewController storyboardIdentifier="ModelVC" id="E7n-tf-XRS" customClass="ModelProteinsViewController" customModule="Proteins" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModelVC" id="E7n-tf-XRS" customClass="ModelProteinsVC" customModule="Proteins" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rAp-id-qWO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKb-sv-NIR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
-                                <color key="backgroundColor" red="0.0077236697227798749" green="0.021964014888645463" blue="0.18695352979274615" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.63904902006529474" green="0.59325329895761914" blue="0.68786354567193742" alpha="0.62" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="delegate" destination="E7n-tf-XRS" id="9aM-km-uGM"/>
                                 </connections>
                             </sceneKitView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldg-zv-V0v">
+                                <rect key="frame" x="16" y="651" width="60" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="3bv-NF-DCs"/>
+                                    <constraint firstAttribute="width" constant="60" id="H88-qG-GqC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NKb-sv-NIR" firstAttribute="leading" secondItem="8ts-Nb-fOT" secondAttribute="leading" id="5qI-gL-x9j"/>
+                            <constraint firstItem="8ts-Nb-fOT" firstAttribute="bottom" secondItem="ldg-zv-V0v" secondAttribute="bottom" constant="107" id="Ev6-D2-R4W"/>
                             <constraint firstItem="NKb-sv-NIR" firstAttribute="top" secondItem="rAp-id-qWO" secondAttribute="top" id="FOj-Qo-3uw"/>
                             <constraint firstItem="NKb-sv-NIR" firstAttribute="trailing" secondItem="8ts-Nb-fOT" secondAttribute="trailing" id="QpM-1c-NFW"/>
+                            <constraint firstItem="ldg-zv-V0v" firstAttribute="leading" secondItem="8ts-Nb-fOT" secondAttribute="leading" constant="16" id="iPn-R9-I9b"/>
                             <constraint firstItem="NKb-sv-NIR" firstAttribute="bottom" secondItem="8ts-Nb-fOT" secondAttribute="bottom" id="kSF-Rt-Lbb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8ts-Nb-fOT"/>
                     </view>
                     <connections>
                         <outlet property="proteinsView" destination="NKb-sv-NIR" id="nd9-ce-miC"/>
+                        <outlet property="typeLabel" destination="ldg-zv-V0v" id="L7D-fT-LRz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Z3-5f-lmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3567" y="564"/>
+            <point key="canvasLocation" x="3565.5999999999999" y="563.79310344827593"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PAz-so-628">
@@ -174,7 +187,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="512x512bb" width="512" height="512"/>
-        <image name="passcode" width="491.51998901367188" height="491.51998901367188"/>
+        <image name="512x512bb" width="256" height="256"/>
+        <image name="passcode" width="512" height="512"/>
     </resources>
 </document>

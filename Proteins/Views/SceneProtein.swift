@@ -13,6 +13,7 @@ class SceneProtein: SCNScene {
     
     var elem: [(position: (x: Float, y: Float, z: Float), type: String)] = []
     var conect: [[Int]] = [[]]
+    var type: String = ""
     
     init(elem: [(position: (x: Float, y: Float, z: Float), type: String)], conect: [[Int]])
     {
@@ -21,8 +22,18 @@ class SceneProtein: SCNScene {
         self.conect = conect
         print(elem)
         print(conect)
+        addCamera()
         drawAtom()
         drawConnection()
+    }
+    
+    func addCamera() {
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        
+        cameraNode.position = SCNVector3(x: elem[0].position.x, y: elem[0].position.y, z: elem[0].position.z + 40)
+        
+        self.rootNode.addChildNode(cameraNode)
     }
     
     required init?(coder aDecoder: NSCoder)
@@ -34,28 +45,49 @@ class SceneProtein: SCNScene {
     {
         let nbr: Int = elem.count
         var i: Int = 0
-        var count: Int = 0
+        
         for item in conect {
             if (i < nbr)
             {
                 let origin: SCNVector3 = SCNVector3(x: elem[i].position.x, y: elem[i].position.y, z: elem[i].position.z)
-                var j: Int = 1
-                while (j < item.count)
+                for nb in item
                 {
-                    let nb: Int = item[j]
-                    if (nb < nbr && i + 1 < nb)
+                    if (nb <= nbr && i + 1 < nb)
                     {
                         let dest: SCNVector3 = SCNVector3(x: elem[nb - 1].position.x, y: elem[nb - 1].position.y, z: elem[nb - 1].position.z)
-                        rootNode.addChildNode(LineNode(node: rootNode, vector1: origin, vector2: dest))
-                        count = count + 1
+                        self.rootNode.addChildNode(LineNode(node: rootNode, vector1: origin, vector2: dest))
                     }
-                    j = j + 1
                 }
             }
             i = i + 1
         }
-        
     }
+    
+//    func drawConnection()
+//    {
+//        let nbr: Int = elem.count
+//        var i: Int = 0
+//        var count: Int = 0
+//        for item in conect {
+//            if (i < nbr)//-
+//            {
+//                let origin: SCNVector3 = SCNVector3(x: elem[i].position.x, y: elem[i].position.y, z: elem[i].position.z)
+//                var j: Int = 1
+//                while (j < item.count)
+//                {
+//                    let nb: Int = item[j]
+//                    if (nb <= nbr && i + 1 < nb)//+
+//                    {
+//                        let dest: SCNVector3 = SCNVector3(x: elem[nb - 1].position.x, y: elem[nb - 1].position.y, z: elem[nb - 1].position.z)
+//                        self.rootNode.addChildNode(LineNode(node: rootNode, vector1: origin, vector2: dest))
+//                        count = count + 1
+//                    }
+//                    j = j + 1
+//                }
+//            }
+//            i = i + 1
+//        }
+//    }
     
     func drawAtom()
     {
@@ -64,7 +96,7 @@ class SceneProtein: SCNScene {
             sphere.firstMaterial?.diffuse.contents = self.CPKcoloring(type: atom.type)
             let sphereNode = SCNNode(geometry: sphere)
             sphereNode.position = SCNVector3(x: atom.position.x, y: atom.position.y, z: atom.position.z)
-            rootNode.addChildNode(sphereNode)
+            self.rootNode.addChildNode(sphereNode)
         }
     }
     

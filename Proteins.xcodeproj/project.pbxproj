@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF3427F021D10D750022E88B /* LineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3427EF21D10D750022E88B /* LineNode.swift */; };
 		CF55434A21CD26790024C4B4 /* SceneProtein.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55434921CD26790024C4B4 /* SceneProtein.swift */; };
-		CFF6F4C721C18F0D0052FBBB /* ModelProteinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6F4C621C18F0D0052FBBB /* ModelProteinsViewController.swift */; };
+		CFF6F4C721C18F0D0052FBBB /* ModelProteinsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6F4C621C18F0D0052FBBB /* ModelProteinsVC.swift */; };
 		E288D84821D0076F00BD8CAA /* ProteinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288D84721D0076F00BD8CAA /* ProteinCell.swift */; };
 		E2AD7C2321CD78D9007FC436 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AD7C2221CD78D9007FC436 /* ApiManager.swift */; };
 		E2ECF1FA21B971F30055CB86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECF1F921B971F30055CB86 /* AppDelegate.swift */; };
@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		CF3427EF21D10D750022E88B /* LineNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineNode.swift; sourceTree = "<group>"; };
 		CF55434921CD26790024C4B4 /* SceneProtein.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneProtein.swift; sourceTree = "<group>"; };
-		CFF6F4C621C18F0D0052FBBB /* ModelProteinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProteinsViewController.swift; sourceTree = "<group>"; };
+		CFF6F4C621C18F0D0052FBBB /* ModelProteinsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProteinsVC.swift; sourceTree = "<group>"; };
 		E288D84721D0076F00BD8CAA /* ProteinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinCell.swift; sourceTree = "<group>"; };
 		E2AD7C2221CD78D9007FC436 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		E2ECF1F621B971F30055CB86 /* Proteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proteins.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,7 +60,7 @@
 		E2707D2421CD57DD0094998E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CFF6F4C621C18F0D0052FBBB /* ModelProteinsViewController.swift */,
+				CFF6F4C621C18F0D0052FBBB /* ModelProteinsVC.swift */,
 				E2FD86A221C17F2D00F6080B /* ListVC.swift */,
 				E2ECF1FB21B971F30055CB86 /* AuthVC.swift */,
 			);
@@ -170,7 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF6F4C721C18F0D0052FBBB /* ModelProteinsViewController.swift in Sources */,
+				CFF6F4C721C18F0D0052FBBB /* ModelProteinsVC.swift in Sources */,
 				E2FD86A321C17F2D00F6080B /* ListVC.swift in Sources */,
 				CF55434A21CD26790024C4B4 /* SceneProtein.swift in Sources */,
 				E2ECF1FC21B971F30055CB86 /* AuthVC.swift in Sources */,

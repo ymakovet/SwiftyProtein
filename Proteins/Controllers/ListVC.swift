@@ -66,7 +66,7 @@ class ListVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSceneKit" {
             let data = sender as! ([(position: (x: Float, y: Float, z: Float), type: String)], [[Int]])
-            let destination = segue.destination as! ModelProteinsViewController
+            let destination = segue.destination as! ModelProteinsVC
             
             destination.elem = data.0
             destination.conect = data.1
