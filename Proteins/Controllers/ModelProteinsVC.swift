@@ -69,4 +69,10 @@ class ModelProteinsVC: UIViewController {
         self.proteinsView.scene?.rootNode.removeAllActions()
     }
     
+    @IBAction func shareButton(_ sender: Any) {
+        let image = proteinsView.snapshot()
+        
+        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
 }

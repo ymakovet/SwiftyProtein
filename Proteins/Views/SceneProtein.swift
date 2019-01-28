@@ -31,7 +31,34 @@ class SceneProtein: SCNScene {
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         
-        cameraNode.position = SCNVector3(x: elem[0].position.x, y: elem[0].position.y, z: elem[0].position.z + 40)
+        var xMin: Float = elem[0].position.x
+        var xMax: Float = elem[0].position.x
+        var yMin: Float = elem[0].position.y
+        var yMax: Float = elem[0].position.y
+        var zMax: Float = elem[0].position.z
+        
+        for el in elem {
+            
+            if xMin > el.position.x {
+               xMin = el.position.x
+            }
+            if xMax < el.position.x {
+               xMax = el.position.x
+            }
+            
+            if yMin > el.position.y {
+                yMin = el.position.y
+            }
+            if yMax < el.position.y {
+                yMax = el.position.y
+            }
+            
+            if zMax < el.position.z {
+                zMax = el.position.z
+            }
+        }
+        
+        cameraNode.position = SCNVector3(x: (xMin + xMax) / 2, y: (yMin + yMax) / 2, z: zMax + 40)
         
         self.rootNode.addChildNode(cameraNode)
     }
@@ -111,7 +138,7 @@ class SceneProtein: SCNScene {
             return (UIColor.blue)
         case "F" :
             return (UIColor.red)
-        case "H", "Cl":
+        case "Cl":
             return (UIColor.green)
         case "Br":
             return (UIColor(red: 0.54, green: 0.0, blue: 0.0, alpha: 1.0))
