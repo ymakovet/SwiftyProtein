@@ -9,17 +9,23 @@
 import UIKit
 import WebKit
 
-class WebVC: UIViewController, WKNavigationDelegate {
+class WebVC: UIViewController {
     
-    @IBOutlet weak var goBackBtn: UIBarButtonItem!
-    @IBOutlet weak var goForwardBtn: UIBarButtonItem!
-    
+    @IBOutlet weak var goBackBtn: UIBarButtonItem! {
+        didSet {
+            goBackBtn.isEnabled = false
+        }
+    }
+    @IBOutlet weak var goForwardBtn: UIBarButtonItem! {
+        didSet {
+            goForwardBtn.isEnabled = false
+        }
+    }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
         didSet {
             activityIndicator.hidesWhenStopped = true
         }
     }
-    
     @IBOutlet weak var webView: WKWebView! {
         didSet {
             webView.navigationDelegate = self
@@ -31,13 +37,11 @@ class WebVC: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goBackBtn.isEnabled = false
-        goForwardBtn.isEnabled = false
-        
         activityIndicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         let request = URLRequest(url: url)
+        
         webView.load(request)
         webView.allowsBackForwardNavigationGestures = true
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.isLoading), options: .new, context: nil)
@@ -52,20 +56,6 @@ class WebVC: UIViewController, WKNavigationDelegate {
                 activityIndicator.stopAnimating()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
-        }
-    }
-    
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        goBackBtn.isEnabled = false
-        goForwardBtn.isEnabled = false
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if webView.canGoBack {
-            goBackBtn.isEnabled = true
-        }
-        if webView.canGoForward {
-            goForwardBtn.isEnabled = true
         }
     }
 
@@ -83,5 +73,21 @@ class WebVC: UIViewController, WKNavigationDelegate {
     
     @IBAction func goForward(_ sender: Any) {
         webView.goForward()
+    }
+}
+
+extension WebVC: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        goBackBtn.isEnabled = false
+        goForwardBtn.isEnabled = false
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if webView.canGoBack {
+            goBackBtn.isEnabled = true
+        }
+        if webView.canGoForward {
+            goForwardBtn.isEnabled = true
+        }
     }
 }
