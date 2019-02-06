@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RB2-Lk-A0R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RB2-Lk-A0R">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -160,20 +161,102 @@
                         <viewLayoutGuide key="safeArea" id="8ts-Nb-fOT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="E4E-cJ-yE3">
-                        <barButtonItem key="rightBarButtonItem" image="share" id="uZW-H9-vHo">
-                            <connections>
-                                <action selector="shareButton:" destination="E7n-tf-XRS" id="oZF-Aw-Gbx"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="share" id="uZW-H9-vHo">
+                                <connections>
+                                    <action selector="shareButton:" destination="E7n-tf-XRS" id="oZF-Aw-Gbx"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="search" id="MyM-Br-SOL">
+                                <connections>
+                                    <action selector="learnMore:" destination="E7n-tf-XRS" id="AZs-Eo-Y27"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="proteinsView" destination="NKb-sv-NIR" id="nd9-ce-miC"/>
                         <outlet property="typeLabel" destination="ldg-zv-V0v" id="L7D-fT-LRz"/>
+                        <segue destination="nCa-4Y-q19" kind="show" identifier="toWEB" id="w9m-A2-a8S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Z3-5f-lmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3565.5999999999999" y="563.79310344827593"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Gmq-Kf-rrS">
+            <objects>
+                <viewController id="nCa-4Y-q19" customClass="WebVC" customModule="Proteins" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xeQ-Ud-Ohe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQh-ns-McO">
+                                <rect key="frame" x="0.0" y="132" width="375" height="680"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xN7-Tr-aBZ">
+                                <rect key="frame" x="177" y="423" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CS2-0x-XqU">
+                                <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="rewind" id="NJ5-4r-322">
+                                        <connections>
+                                            <action selector="goBack:" destination="nCa-4Y-q19" id="uoG-Oa-ucJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="OfO-xy-fYz"/>
+                                    <barButtonItem systemItem="fastForward" id="XmU-da-rjL">
+                                        <connections>
+                                            <action selector="goForward:" destination="nCa-4Y-q19" id="qlg-gV-el0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8OA-Yx-RsJ"/>
+                                    <barButtonItem style="done" systemItem="refresh" id="r0r-Fa-MBj">
+                                        <connections>
+                                            <action selector="refresh:" destination="nCa-4Y-q19" id="lMc-gl-ohT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hQh-ns-McO" firstAttribute="trailing" secondItem="aUg-tI-F8l" secondAttribute="trailing" id="12v-3v-ibT"/>
+                            <constraint firstItem="hQh-ns-McO" firstAttribute="top" secondItem="CS2-0x-XqU" secondAttribute="bottom" id="3au-zj-Alz"/>
+                            <constraint firstItem="CS2-0x-XqU" firstAttribute="top" secondItem="aUg-tI-F8l" secondAttribute="top" id="CeX-O7-5fm"/>
+                            <constraint firstItem="xN7-Tr-aBZ" firstAttribute="centerX" secondItem="aUg-tI-F8l" secondAttribute="centerX" id="Ehp-Jc-CHu"/>
+                            <constraint firstItem="xN7-Tr-aBZ" firstAttribute="centerY" secondItem="aUg-tI-F8l" secondAttribute="centerY" id="F9e-0L-0nc"/>
+                            <constraint firstItem="CS2-0x-XqU" firstAttribute="trailing" secondItem="aUg-tI-F8l" secondAttribute="trailing" id="Hn1-HF-mbC"/>
+                            <constraint firstAttribute="bottom" secondItem="hQh-ns-McO" secondAttribute="bottom" id="L16-Ml-6WQ"/>
+                            <constraint firstItem="CS2-0x-XqU" firstAttribute="leading" secondItem="aUg-tI-F8l" secondAttribute="leading" id="Pt2-oF-UVC"/>
+                            <constraint firstItem="hQh-ns-McO" firstAttribute="leading" secondItem="aUg-tI-F8l" secondAttribute="leading" id="ree-ru-0xc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aUg-tI-F8l"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="wkk-sN-g92">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oCC-d1-o7G">
+                            <connections>
+                                <action selector="cancel:" destination="nCa-4Y-q19" id="7aH-0m-dRI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="xN7-Tr-aBZ" id="O5a-lh-pfm"/>
+                        <outlet property="goBackBtn" destination="NJ5-4r-322" id="guF-pL-Cv5"/>
+                        <outlet property="goForwardBtn" destination="XmU-da-rjL" id="lUJ-vn-MIT"/>
+                        <outlet property="webView" destination="hQh-ns-McO" id="nl0-iq-Nzy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1uV-kF-wGK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4261.6000000000004" y="561.57635467980299"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PAz-so-628">
@@ -195,8 +278,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="512x512bb" width="512" height="512"/>
-        <image name="passcode" width="491.51998901367188" height="491.51998901367188"/>
-        <image name="share" width="22.5" height="22.5"/>
+        <image name="512x512bb" width="256" height="256"/>
+        <image name="passcode" width="512" height="512"/>
+        <image name="search" width="29" height="29"/>
+        <image name="share" width="30" height="30"/>
     </resources>
 </document>

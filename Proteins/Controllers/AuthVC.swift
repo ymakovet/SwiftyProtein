@@ -20,7 +20,7 @@ class AuthVC: UIViewController {
         super.viewDidLoad()
         
         identifyLabel.text = """
-        Identify yourself
+        \(NSLocalizedString("Identify yourself", comment: "set in code"))
         ⬇️
         """
         
@@ -44,7 +44,7 @@ class AuthVC: UIViewController {
     }
     
     private func login(completion: @escaping () -> Void) {
-        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Identify yourself") {
+        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: NSLocalizedString("Identify yourself", comment: "set in code")) {
             [unowned self] (succes, error) in
             DispatchQueue.main.async {
                 if succes {
@@ -52,7 +52,7 @@ class AuthVC: UIViewController {
                 }
                 else {
                     if !(error!.localizedDescription == "Canceled by user.") && !(error!.localizedDescription == "Fallback authentication mechanism selected.") {
-                        self.showAlertController("Authentication Failed")
+                        self.showAlertController(NSLocalizedString("Authentication Failed", comment: "set in code"))
                     }
                 }
 
@@ -73,13 +73,6 @@ class AuthVC: UIViewController {
     }
     
 }
-
-//extension ViewController: UITextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        self.view.endEditing(true)
-//        return false
-//    }
-//}
 
 extension UIViewController {
 

@@ -20,8 +20,6 @@ class SceneProtein: SCNScene {
         super.init()
         self.elem = elem
         self.conect = conect
-        print(elem)
-        print(conect)
         addCamera()
         drawAtom()
         drawConnection()
@@ -89,32 +87,6 @@ class SceneProtein: SCNScene {
             i = i + 1
         }
     }
-    
-//    func drawConnection()
-//    {
-//        let nbr: Int = elem.count
-//        var i: Int = 0
-//        var count: Int = 0
-//        for item in conect {
-//            if (i < nbr)//-
-//            {
-//                let origin: SCNVector3 = SCNVector3(x: elem[i].position.x, y: elem[i].position.y, z: elem[i].position.z)
-//                var j: Int = 1
-//                while (j < item.count)
-//                {
-//                    let nb: Int = item[j]
-//                    if (nb <= nbr && i + 1 < nb)//+
-//                    {
-//                        let dest: SCNVector3 = SCNVector3(x: elem[nb - 1].position.x, y: elem[nb - 1].position.y, z: elem[nb - 1].position.z)
-//                        self.rootNode.addChildNode(LineNode(node: rootNode, vector1: origin, vector2: dest))
-//                        count = count + 1
-//                    }
-//                    j = j + 1
-//                }
-//            }
-//            i = i + 1
-//        }
-//    }
     
     func drawAtom()
     {

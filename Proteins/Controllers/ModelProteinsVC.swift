@@ -24,7 +24,6 @@ class ModelProteinsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(elem[0].0)
         initScene()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(rec:)))
@@ -48,7 +47,7 @@ class ModelProteinsVC: UIViewController {
     func findProtein(position: SCNVector3) {
         for protein in self.elem {
             if protein.position.x == position.x, protein.position.y == position.y, protein.position.z == position.z {
-                self.typeLabel.text = "Type: \(protein.type)"
+                self.typeLabel.text = "\(NSLocalizedString("Type:", comment: "set in code")) \(protein.type)"
             }
         }
     }
@@ -69,10 +68,25 @@ class ModelProteinsVC: UIViewController {
         self.proteinsView.scene?.rootNode.removeAllActions()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWEB" {
+            let webVC = segue.destination as! WebVC
+            
+            webVC.navigationItem.title = navigationItem.title
+            webVC.url = sender as! URL
+        }
+    }
+    
     @IBAction func shareButton(_ sender: Any) {
         let image = proteinsView.snapshot()
         
         let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func learnMore(_ sender: Any) {
+        guard let url = URL(string: "https://www.rcsb.org/ligand/\(navigationItem.title!)") else {return}
+        
+        performSegue(withIdentifier: "toWEB", sender: url)
     }
 }
