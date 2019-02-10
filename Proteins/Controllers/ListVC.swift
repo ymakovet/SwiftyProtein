@@ -2,8 +2,8 @@
 //  ListVC.swift
 //  Proteins
 //
-//  Created by Adilyam TILEGENOVA on 12/12/18.
-//  Copyright © 2018 Adilyam TILEGENOVA. All rights reserved.
+//  Created by Ruslan NAUMENKO on 2/10/19.
+//  Copyright © 2019 UNIT Factory. All rights reserved.
 //
 
 import UIKit
@@ -104,6 +104,8 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
                     let title = tableView.cellForRow(at: indexPath)?.textLabel?.text
                     self.performSegue(withIdentifier: "showSceneKit", sender: (elem, conect, title))
                 }
+            } else {
+                self.showAlertController("Failed loading from site")
             }
         }
     }

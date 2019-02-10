@@ -1,16 +1,16 @@
 //
-//  ViewController.swift
+//  AuthVC.swift
 //  Proteins
 //
-//  Created by Adilyam TILEGENOVA on 12/6/18.
-//  Copyright © 2018 Adilyam TILEGENOVA. All rights reserved.
+//  Created by Ruslan NAUMENKO on 2/10/19.
+//  Copyright © 2019 UNIT Factory. All rights reserved.
 //
 
 import UIKit
 import LocalAuthentication
 
 class AuthVC: UIViewController {
-
+    
     @IBOutlet weak var identifyLabel: UILabel!
     @IBOutlet weak var touchIDBtn: UIButton!
     
@@ -55,7 +55,7 @@ class AuthVC: UIViewController {
                         self.showAlertController(NSLocalizedString("Authentication Failed", comment: "set in code"))
                     }
                 }
-
+                
                 self.context = LAContext()
                 completion()
             }
@@ -73,23 +73,3 @@ class AuthVC: UIViewController {
     }
     
 }
-
-extension UIViewController {
-
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-
-    func showAlertController(_ message: String, _ title: String = "") {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
-    }
-}
-

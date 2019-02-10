@@ -3,7 +3,7 @@
 //  Proteins
 //
 //  Created by Yuliia MAKOVETSKAYA on 12/12/18.
-//  Copyright © 2018 Adilyam TILEGENOVA. All rights reserved.
+//  Copyright © 2019 UNIT Factory. All rights reserved.
 //
 
 import UIKit

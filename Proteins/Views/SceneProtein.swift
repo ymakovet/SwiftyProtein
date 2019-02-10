@@ -103,37 +103,37 @@ class SceneProtein: SCNScene {
     {
         switch type {
         case "H":
-            return (UIColor.white)
+            return UIColor.white
         case "C":
-            return (UIColor.black)
+            return UIColor.black
         case "N":
-            return (UIColor.blue)
-        case "F" :
-            return (UIColor.red)
-        case "Cl":
-            return (UIColor.green)
+            return UIColor.blue
+        case "O" :
+            return UIColor.red
+        case "F", "Cl":
+            return UIColor.green
         case "Br":
-            return (UIColor(red: 0.54, green: 0.0, blue: 0.0, alpha: 1.0))
+            return UIColor(red: 0.54, green: 0.17, blue: 0.08, alpha: 1.0)
         case "I":
-            return (UIColor(red: 0.58, green: 0.0, blue: 0.82, alpha: 1.0))
+            return UIColor(red: 0.37, green: 0.06, blue: 0.71, alpha: 1.0)
         case "He", "Ne", "Ar", "Xe", "Kr":
-            return(UIColor.cyan)
+            return UIColor(red: 0.46, green: 0.98, blue: 0.99, alpha: 1.0)
         case "P":
-            return(UIColor.orange)
+            return UIColor(red: 0.95, green: 0.62, blue: 0.22, alpha: 1.0)
         case "S":
-            return(UIColor.yellow)
+            return UIColor(red: 0.98, green: 0.90, blue: 0.33, alpha: 1.0)
         case "B":
-            return (UIColor(red: 0.98, green: 0.5, blue: 0.44, alpha: 1.0))
-        case "Li", "Na", "K", "Rb", "Cs", "Fr":
-            return (UIColor(red: 0.54, green: 0.16, blue: 0.88, alpha: 1.0))
+            return UIColor(red: 0.95, green: 0.68, blue: 0.50, alpha: 1.0)
+        case "Li", "Na", "K", "Rb", "Cs":
+            return UIColor(red: 0.42, green: 0.07, blue: 0.96, alpha: 1.0)
         case "Be", "Mg", "Ca", "Sr", "Ba", "Ra":
-            return (UIColor(red: 0.0, green: 0.39, blue: 0.0, alpha: 1.0))
+            return UIColor(red: 0.2, green: 0.46, blue: 0.12, alpha: 1.0)
         case "Ti":
-            return (UIColor.gray)
+            return UIColor.gray
         case "Fe":
-            return (UIColor(red: 1.0, green: 0.55, blue: 0.0, alpha: 1.0))
+            return UIColor(red: 0.81, green: 0.49, blue: 0.18, alpha: 1.0)
         default:
-            return (UIColor(red: 1.0, green: 0.75, blue: 0.79, alpha: 1.0))
+            return UIColor(red: 0.81, green: 0.49, blue: 0.97, alpha: 1.0)
         }
     }
 }

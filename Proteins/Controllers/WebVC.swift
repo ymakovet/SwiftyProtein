@@ -2,8 +2,8 @@
 //  WebVC.swift
 //  Proteins
 //
-//  Created by Ruslan NAUMENKO on 2/6/19.
-//  Copyright © 2019 Adilyam TILEGENOVA. All rights reserved.
+//  Created by Ruslan NAUMENKO on 2/10/19.
+//  Copyright © 2019 UNIT Factory. All rights reserved.
 //
 
 import UIKit
